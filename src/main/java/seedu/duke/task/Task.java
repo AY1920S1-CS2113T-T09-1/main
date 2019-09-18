@@ -100,6 +100,7 @@ public abstract class Task {
     public String getRecurringString() {
         return this.recurringString;
     }
+
     /**
      * Returns a string that displays all information
      * about the task in a user readable format.
@@ -110,9 +111,15 @@ public abstract class Task {
         return "[" + this.getStatusIcon() + "] " + this.getDescription();
     }
 
+    /**
+     * Returns a string that displays how often the task will recur.
+     *
+     * @return the description of how often the task will recur.
+     */
     public String recurringString() {
         return (isRecurring ? " (Every " + getRecurringString() + ")" : "");
     }
+
     /**
      * Returns a disc savable csv format of the task info.
      *

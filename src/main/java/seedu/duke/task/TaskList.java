@@ -233,24 +233,24 @@ public class TaskList {
             boolean failRecur = false;
 
             switch (userInput[1]) {
-                case "min":
-                    list.get(i).setRecurringMin(num);
-                    break;
-                case "hour":
-                    list.get(i).setRecurringMin(num * 60);
-                    break;
-                case "day":
-                    list.get(i).setRecurringMin(num * 60 * 24);
-                    break;
-                case "week":
-                    list.get(i).setRecurringMin(num * 60 * 24 * 7);
-                    break;
-                case "month":
-                    list.get(i).setRecurringMin(num * 60 * 24 * 7 * 4);
-                    break;
-                default:
-                    System.out.println("You have typed in the wrong format. Please re-enter the recur command.");
-                    failRecur = true;
+            case "min":
+                list.get(i).setRecurringMin(num);
+                break;
+            case "hour":
+                list.get(i).setRecurringMin(num * 60);
+                break;
+            case "day":
+                list.get(i).setRecurringMin(num * 60 * 24);
+                break;
+            case "week":
+                list.get(i).setRecurringMin(num * 60 * 24 * 7);
+                break;
+            case "month":
+                list.get(i).setRecurringMin(num * 60 * 24 * 7 * 4);
+                break;
+            default:
+                System.out.println("You have typed in the wrong format. Please re-enter the recur command.");
+                failRecur = true;
             }
 
             if (!failRecur) {
