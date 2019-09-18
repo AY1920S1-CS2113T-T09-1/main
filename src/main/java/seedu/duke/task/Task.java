@@ -17,11 +17,29 @@ public abstract class Task {
     protected boolean isDone;
 
     /**
+     * Boolean which states whether the task is recurring.
+     */
+    protected boolean isRecurring;
+
+    /**
+     * Integer to store how often the task is recurring in minutes.
+     */
+    protected int recurringMin;
+
+    /**
+     * String to store the description of how often the task is recurring.
+     */
+    protected String recurringString;
+
+    /**
      * Initializes description and isDone as false.
      */
     public Task(String description) {
         this.description = description;
         this.isDone = false;
+        this.isRecurring = false;
+        this.recurringMin = 0;
+        recurringString = "";
     }
 
     /**
@@ -41,6 +59,31 @@ public abstract class Task {
     }
 
     /**
+     * Marks the task as recurring.
+     */
+    public void markAsRecurring() {
+        this.isRecurring = true;
+    }
+
+    /**
+     * Sets how often the task is recurring in minutes.
+     *
+     * @param min minutes of how often the task is recurring.
+     */
+    public void setRecurringMin(int min) {
+        this.recurringMin = min;
+    }
+
+    /**
+     * Sets the description of how often the task is recurring as a string.
+     *
+     * @param description string of the description of how often the task will be recurred.
+     */
+    public void setRecurringString(String description) {
+        this.recurringString = description;
+    }
+
+    /**
      * Returns the description of the task.
      *
      * @return string description.
@@ -50,13 +93,22 @@ public abstract class Task {
     }
 
     /**
+     * Returns the description of the recurring task.
+     *
+     * @return string description.
+     */
+    public String getRecurringString() {
+        return this.recurringString;
+    }
+    /**
      * Returns a string that displays all information
      * about the task in a user readable format.
      *
      * @return the status and description of the task.
      */
     public String toString() {
-        return "[" + this.getStatusIcon() + "] " + this.getDescription();
+        return "[" + this.getStatusIcon() + "] " + this.getDescription()
+                + (isRecurring ? " (Recurs every " + getRecurringString() + ")" : "");
     }
 
     /**

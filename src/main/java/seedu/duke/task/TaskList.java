@@ -212,6 +212,61 @@ public class TaskList {
     }
 
     /**
+     * Sets task at index as a recurring task.
+     *
+     * @param i index at which task is going to be set as recurring.
+     * @throws IndexOutOfBoundsException if an out of bounds index is requested.
+     */
+    public void recurTask(int i) {
+        try {
+            System.out.println("\t_____________________________________");
+            System.out.println("\tYou are requesting to set the following task as recurring:");
+            System.out.println("\t" + list.get(i).toString() + "\n");
+            System.out.println("\tPlease type in how often the task will be recurring in the following format:");
+            System.out.println("\tEnter a number followed by min/hour/day/week/month");
+            System.out.println("\t_____________________________________");
+
+            Scanner scanner = new Scanner(System.in);
+            String rawInput = scanner.nextLine();
+            String[] userInput = rawInput.split(" ");
+            int num = Integer.parseInt(userInput[0]);
+            boolean failRecur = false;
+
+            switch (userInput[1]) {
+                case "min":
+                    list.get(i).setRecurringMin(num);
+                    break;
+                case "hour":
+                    list.get(i).setRecurringMin(num * 60);
+                    break;
+                case "day":
+                    list.get(i).setRecurringMin(num * 60 * 24);
+                    break;
+                case "week":
+                    list.get(i).setRecurringMin(num * 60 * 24 * 7);
+                    break;
+                case "month":
+                    list.get(i).setRecurringMin(num * 60 * 24 * 7 * 4);
+                    break;
+                default:
+                    System.out.println("You have typed in the wrong format. Please re-enter the recur command.");
+                    failRecur = true;
+            }
+
+            if (!failRecur) {
+                list.get(i).setRecurringString(rawInput);
+                list.get(i).markAsRecurring();
+                System.out.println("\t_____________________________________");
+                System.out.println("\tGot it. You have set the task to recur every " + rawInput);
+                System.out.println("\t" + list.get(i).toString());
+                System.out.println("\t_____________________________________");
+            }
+        } catch (IndexOutOfBoundsException e) {
+            ui.task_doesnt_exist_error();
+        }
+    }
+
+    /**
      * Displays the list of tasks contained in the object.
      */
     public void displayList() {
