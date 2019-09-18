@@ -39,7 +39,7 @@ public abstract class Task {
         this.isDone = false;
         this.isRecurring = false;
         this.recurringMin = 0;
-        recurringString = "";
+        this.recurringString = "";
     }
 
     /**
@@ -118,7 +118,8 @@ public abstract class Task {
      */
     public String toSaveFormat() {
         int isDone = this.isDone ? 1 : 0;
-        return isDone + "|" + this.description;
+        String recurring = "|" + (this.isRecurring ? 1 : 0) + "|" + this.recurringString + "|" + this.recurringMin;
+        return isDone + "|" + this.description + recurring;
     }
 
     /**
