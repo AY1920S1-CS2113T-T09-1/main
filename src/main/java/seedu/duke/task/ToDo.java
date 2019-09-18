@@ -21,7 +21,7 @@ public class ToDo extends Task {
      * @return details of the task in a user readable format.
      */
     public String toString() {
-        return "[T]" + super.toString();
+        return "[T]" + super.toString() + super.recurringString();
     }
 
     /**
@@ -31,7 +31,7 @@ public class ToDo extends Task {
      * @return inherited string plus task format.
      */
     public String toSaveFormat() {
-        return "T|" + super.toSaveFormat();
+        return "T|" + super.toSaveFormat() + super.saveRecurringString();
     }
 
     /**

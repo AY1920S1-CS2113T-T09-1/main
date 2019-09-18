@@ -107,10 +107,12 @@ public abstract class Task {
      * @return the status and description of the task.
      */
     public String toString() {
-        return "[" + this.getStatusIcon() + "] " + this.getDescription()
-                + (isRecurring ? " (Recurs every " + getRecurringString() + ")" : "");
+        return "[" + this.getStatusIcon() + "] " + this.getDescription();
     }
 
+    public String recurringString() {
+        return (isRecurring ? " (Every " + getRecurringString() + ")" : "");
+    }
     /**
      * Returns a disc savable csv format of the task info.
      *
@@ -118,8 +120,16 @@ public abstract class Task {
      */
     public String toSaveFormat() {
         int isDone = this.isDone ? 1 : 0;
-        String recurring = "|" + (this.isRecurring ? 1 : 0) + "|" + this.recurringString + "|" + this.recurringMin;
-        return isDone + "|" + this.description + recurring;
+        return isDone + "|" + this.description;
+    }
+
+    /**
+     * Returns a disc savable csv format of the task recurring info.
+     *
+     * @return a pipe separated string of the status and description.
+     */
+    public String saveRecurringString() {
+        return "|" + (this.isRecurring ? 1 : 0) + "|" + this.recurringString + "|" + this.recurringMin;
     }
 
     /**

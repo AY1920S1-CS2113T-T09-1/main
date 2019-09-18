@@ -84,7 +84,7 @@ public class Event extends Task {
      * @return a string with the target info.
      */
     public String toString() {
-        return "[E]" + super.toString() + " (at: " + this.dateAt + ")";
+        return "[E]" + super.toString() + " (at: " + this.dateAt + ")" + super.recurringString();
     }
 
 
@@ -94,7 +94,7 @@ public class Event extends Task {
      * @return a string with pipe separated info.
      */
     public String toSaveFormat() {
-        return "E|" + super.toSaveFormat() + "|" + this.at;
+        return "E|" + super.toSaveFormat() + "|" + this.at + super.saveRecurringString();
     }
 
     /**

@@ -86,7 +86,7 @@ public class Deadline extends Task {
      * @return a string with the target info.
      */
     public String toString() {
-        return "[D]" + super.toString() + " (by: " + this.dateBy + ")";
+        return "[D]" + super.toString() + " (by: " + this.dateBy + ")" + super.recurringString();
     }
 
     /**
@@ -95,7 +95,7 @@ public class Deadline extends Task {
      * @return a string with pipe separated info.
      */
     public String toSaveFormat() {
-        return "D|" + super.toSaveFormat() + "|" + this.by;
+        return "D|" + super.toSaveFormat() + "|" + this.by + super.saveRecurringString();
     }
 
     /**

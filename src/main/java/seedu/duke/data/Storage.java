@@ -54,6 +54,15 @@ public class Storage {
                 if (taskString[1].equals("1")) {
                     list.get(list.size() - 1).markAsDone();
                 }
+                if (taskString[0].equals("T") && taskString[3].equals("1")) {
+                    list.get(list.size() - 1).markAsRecurring();
+                    list.get(list.size() - 1).setRecurringString(taskString[4]);
+                    list.get(list.size() - 1).setRecurringMin(Integer.parseInt(taskString[5]));
+                } else if (taskString[4].equals("1")) {
+                    list.get(list.size() - 1).markAsRecurring();
+                    list.get(list.size() - 1).setRecurringString(taskString[5]);
+                    list.get(list.size() - 1).setRecurringMin(Integer.parseInt(taskString[6]));
+                }
             }
             dukeTxt.close();
         } catch (FileNotFoundException e) {
